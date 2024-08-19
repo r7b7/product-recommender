@@ -1,2 +1,2 @@
 # product-recommender
-personalized recommendation system for SMB to suggest products
+personalized recommendation system
