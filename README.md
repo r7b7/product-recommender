@@ -1,2 +1,2 @@
-# product-recommender
+# product-recommender-poc
 personalized recommendation system
