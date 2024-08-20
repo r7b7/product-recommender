@@ -9,16 +9,9 @@ class SVDModel:
         self.model = None
 
     def train_model(self):
-        # Synthetic ratings data
-        ratings_dict = {
-            "itemID": [1, 1, 1, 2, 2, 2, 3, 3, 4],
-            "userID": [1, 2, 4, 2, 3, 4, 1, 4, 3],
-            "rating": [4, 4, 4, 3, 4, 1, 4, 4, 4],
-        }
-        df = pd.DataFrame(ratings_dict)
-        reader = Reader(rating_scale=(1, 5))
-        data = Dataset.load_from_df(df[["itemID", "userID", "rating"]], reader)
-        trainset, testset = train_test_split(data, test_size=0.25)
+        # Fetch built-in movie ratings dataset
+        data = Dataset.load_builtin('ml-100k')
+        trainset = data.build_full_trainset()
         self.model = SVD()
         self.model.fit(trainset)
         print('Training done')
